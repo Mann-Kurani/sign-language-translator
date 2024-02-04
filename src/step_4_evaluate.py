@@ -12,14 +12,14 @@ import onnxruntime as ort
 from step_2_dataset import get_train_test_loaders
 from step_3_train import Net
 
-
+# This function evaluates the performance of a neural network model on a dataset by comparing model predictions with true labels.
 def evaluate(outputs: Variable, labels: Variable) -> float:
     """Evaluate neural network outputs against non-one-hotted labels."""
     Y = labels.numpy()
     Yhat = np.argmax(outputs, axis=1)
     return float(np.sum(Yhat == Y))
 
-
+# This function evaluates a neural network model's performance on a dataset in batches, allowing for handling large datasets that might not fit into memory all at once.
 def batch_evaluate(
         net: Net,
         dataloader: torch.utils.data.DataLoader) -> float:
@@ -33,7 +33,7 @@ def batch_evaluate(
         score += evaluate(outputs, batch['label'][:, 0])
     return score / n
 
-
+# This function evaluates a trained PyTorch model on both training and test sets, then exports it to the ONNX format, checks its validity, and evaluates it again using ONNX Runtime.
 def validate():
     trainloader, testloader = get_train_test_loaders()
     net = Net().float().eval()
