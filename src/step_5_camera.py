@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import onnxruntime as ort
 
-
+# This function crops a rectangular frame to a square shape by extracting the center region, ensuring consistent dimensions for image processing tasks.
 def center_crop(frame):
     h, w, _ = frame.shape
     start = abs(h - w) // 2
@@ -10,7 +10,7 @@ def center_crop(frame):
         return frame[start: start + w]
     return frame[:, start: start + h]
 
-
+# This function captures video frames from a webcam, preprocesses them, uses an ONNX-exported model to classify hand gestures in real-time, and displays the predicted letter on the screen.
 def main():
     # constants
     index_to_letter = list('ABCDEFGHIKLMNOPQRSTUVWXY')
