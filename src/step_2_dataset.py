@@ -9,10 +9,10 @@ import torch
 from typing import List
 
 import csv
-#Utility for loading Sign Language dataset into PyTorch. Dataset posted on Kaggle in 2017,
+# Utility for loading Sign Language dataset into PyTorch. Dataset posted on Kaggle in 2017,
 # by an unnamed author with username `tecperson`:https://www.kaggle.com/datamunge/sign-language-mnist
 
-
+# The SignLanguageMNIST class is designed to load and manage the Sign Language MNIST dataset, specifically for use in PyTorch-based machine learning models.
 class SignLanguageMNIST(Dataset):
     """Sign Language classification dataset.
 

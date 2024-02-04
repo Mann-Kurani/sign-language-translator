@@ -29,7 +29,7 @@ class Net(nn.Module):
         x = self.fc3(x)
         return x
 
-
+# This function orchestrates the training process of a PyTorch model for sign language classification.
 def main():
     net = Net().float()
     criterion = nn.CrossEntropyLoss()
@@ -42,7 +42,7 @@ def main():
         scheduler.step()
     torch.save(net.state_dict(), "checkpoint.pth")
 
-
+# Executes training
 def train(net, criterion, optimizer, trainloader, epoch):
     running_loss = 0.0
     for i, data in enumerate(trainloader, 0):
