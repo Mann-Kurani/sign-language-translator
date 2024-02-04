@@ -1,3 +1,4 @@
+#importing libraries
 from torch.utils.data import Dataset
 from torch.autograd import Variable
 import torchvision.transforms as transforms
@@ -8,6 +9,8 @@ import torch
 from typing import List
 
 import csv
+#Utility for loading Sign Language dataset into PyTorch. Dataset posted on Kaggle in 2017,
+# by an unnamed author with username `tecperson`:https://www.kaggle.com/datamunge/sign-language-mnist
 
 
 class SignLanguageMNIST(Dataset):
