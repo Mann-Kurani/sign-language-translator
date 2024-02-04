@@ -24,6 +24,7 @@ class SignLanguageMNIST(Dataset):
     """
 
     @staticmethod
+    #This function creates and returns a specific mapping between two sets of labels.
     def get_label_mapping():
         """
         We map all labels to [0, 23]. This mapping from dataset labels [0, 23]
@@ -34,6 +35,7 @@ class SignLanguageMNIST(Dataset):
         return mapping
 
     @staticmethod
+    #This function reads data from a CSV file, extracts labels and image pixel values, and applies a label mapping.
     def read_label_samples_from_csv(path: str):
         """
         Assumes first column in CSV is the label and subsequent 28^2 values
@@ -49,6 +51,7 @@ class SignLanguageMNIST(Dataset):
                 samples.append(list(map(int, line[1:])))
         return labels, samples
 
+    # This is the constructor of a class, likely related to handling a dataset of sign language images.
     def __init__(self,
             path: str="data/sign_mnist_train.csv",
             mean: List[float]=[0.485],
@@ -64,9 +67,12 @@ class SignLanguageMNIST(Dataset):
         self._mean = mean
         self._std = std
 
+
     def __len__(self):
         return len(self._labels)
-
+    
+    # This special method in Python classes is called when an object is accessed using indexing, like object[idx].
+    # It's often used to implement custom behavior for accessing elements of a dataset or collection.
     def __getitem__(self, idx):
         transform = transforms.Compose([
             transforms.ToPILImage(),
@@ -79,7 +85,8 @@ class SignLanguageMNIST(Dataset):
             'label': torch.from_numpy(self._labels[idx]).float()
         }
 
-
+# This function creates and returns data loaders for both training and testing sets,
+# which are essential for loading and managing data during model training in PyTorch.
 def get_train_test_loaders(batch_size=32):
     trainset = SignLanguageMNIST('data/sign_mnist_train.csv')
     trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=True)
