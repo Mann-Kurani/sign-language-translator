@@ -20,7 +20,7 @@ def main():
     # create runnable session with exported model
     ort_session = ort.InferenceSession("signlanguage.onnx")
 
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1000)
     while True:
         # Capture frame-by-frame
         ret, frame = cap.read()
