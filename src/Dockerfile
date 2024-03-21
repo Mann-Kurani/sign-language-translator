@@ -20,5 +20,6 @@ COPY step_2_dataset.py step_3_train.py step_4_evaluate.py step_5_camera.py /app/
 # Define environment variable
 ENV PYTHONUNBUFFERED=TRUE
 
+EXPOSE 80
 # Run step_5_camera.py when the container launches
 CMD ["python", "step_5_camera.py"]
