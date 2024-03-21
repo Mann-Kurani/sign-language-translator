@@ -23,7 +23,7 @@ class VideoTransformer(VideoTransformerBase):
         letter = index_to_letter[int(index)]
 
         # Draw the predicted letter on the frame
-        cv2.putText(frm, letter, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+        cv2.putText(frm, letter, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
         return av.VideoFrame.from_ndarray(frm, format="bgr24")
 
